@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './number';
 
 const name = 'Oksana'
 const password = false;
@@ -34,6 +35,9 @@ function App() {
           {human && 'Is human'}
         </p>
         <p>
+        count * length = {count * length} 
+        </p>
+        <p>
         Age is  {age} years. Let's prove it: {currentYear} - {yearOfBirth} =
         {currentYear - yearOfBirth}
         </p>
@@ -52,7 +56,7 @@ function App() {
           whiteSpace: 'pre-line'
         }}>
         Here will be a new ToDo Application. In {5} weeks. {'\n'}
-         {3+1} % are done already.</div>
+         {3+1} % is done already.</div>
       </header>
     </div>
   );
