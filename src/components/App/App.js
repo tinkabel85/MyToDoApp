@@ -2,7 +2,8 @@ import React from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
-import './App.css';
+import styles from './App.module.css';
+
 
 const todoItem = 'Create a new app';
 
@@ -19,8 +20,8 @@ const App = () => {
         }
     ]
     return (
-    <div className='wrap'>
-        <h1 className='wrap__title'>Important Tasks</h1>
+    <div className={styles.wrap}>
+        <h1 className={styles.title}>Important Tasks</h1>
         <InputItem />
         <ItemList items = {items} />
         <Footer count ={3} />
