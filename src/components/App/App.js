@@ -10,13 +10,16 @@ const todoItem = 'Create a new app';
 const App = () => {
     const items = [
         {
-          value: 'Create a new app'
+          value: 'Create a new app',
+          isDone: true
         },
         {
-          value: 'Add props'
+          value: 'Add props',
+          isDone: false
         },
         {
-          value: 'Finish all tasks'
+          value: 'Finish all tasks',
+          isDone: true
         }
     ]
     return (
