@@ -1,0 +1,35 @@
+* {
+  font-size: 20px;
+  font-weight: 100;
+  color: #a8a8a8;
+}
+.footer {
+  position: absolute;
+  bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  height: 70px;
+}
+
+.btnWrap {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.item{
+  background: transparent;
+  border: none;
+  padding: 8px;
+}
+.itemActive {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+
+.clear {
+  background: transparent;
+  border: none;
+}
