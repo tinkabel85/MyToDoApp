@@ -4,11 +4,12 @@ import styles from './Item.module.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
-const Item = ({value, isDone}) => (
+const Item = ({value, isDone, onClickDone}) => (
   <div className={styles.wrap}>
       <Checkbox
           color="default"
           inputProps={{ 'aria-label': 'checkbox with default color' }}
+          onClick={()=>onClickDone(isDone)}
         />
   <span className={
     classnames({

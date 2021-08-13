@@ -38,6 +38,8 @@ class App extends React.Component {
           ]
     };
 
+    onClickDone = isDone => console.log(isDone);
+  
   render() {
 
     return (
@@ -45,7 +47,7 @@ class App extends React.Component {
         <h1 className={styles.title}>todos</h1>
         <div className={styles.main}>
         <InputItem />
-        <ItemList items = {this.state.items} />
+        <ItemList items = {this.state.items} onClickDone={this.onClickDone}/>
         <Footer count ={3} btn={this.state.filter}/>
         </div>
     </div>);
