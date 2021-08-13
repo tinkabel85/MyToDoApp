@@ -3,9 +3,9 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import CustomizedInput from '../InputItem/InputItem';
 
-
-const todoItem = 'Create a new app';
+// const todoItem = 'Create a new app';
 
 const App = () => {
     const items = [
@@ -19,15 +19,32 @@ const App = () => {
         },
         {
           value: 'Finish all tasks',
-          isDone: true
+          isDone: false
         }
-    ]
+    ];
+
+    const filter = [
+      {
+        isActive: true,
+        value: 'All',
+      },
+      {
+        isActive: false,
+        value: 'Active',
+      },
+      {
+      isActive: false,
+      value: 'Completed',
+      }
+    ];
     return (
     <div className={styles.wrap}>
-        <h1 className={styles.title}>Important Tasks</h1>
+        <h1 className={styles.title}>todos</h1>
+        <div className={styles.main}>
         <InputItem />
         <ItemList items = {items} />
-        <Footer count ={3} />
+        <Footer count ={3} btn={filter}/>
+        </div>
     </div>);
     }
 

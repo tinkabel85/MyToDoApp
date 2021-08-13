@@ -1,7 +1,24 @@
 .item {
+  list-style-type: none;
   color: #333;
+  padding-left: 10px;
 }
 
 .done {
   color: #c4c4c4;
+  text-decoration: line-through;
+}
+
+.btn {
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 }
