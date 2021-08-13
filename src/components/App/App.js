@@ -5,9 +5,8 @@ import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import CustomizedInput from '../InputItem/InputItem';
 
-// const todoItem = 'Create a new app';
-
-const App = () => {
+class App extends React.Component {
+  render() {
     const items = [
         {
           value: 'Create a new app',
@@ -46,6 +45,7 @@ const App = () => {
         <Footer count ={3} btn={filter}/>
         </div>
     </div>);
-    }
+  }
+};
 
     export default App;
