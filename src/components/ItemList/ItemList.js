@@ -3,12 +3,12 @@ import Item from '../Item/Item';
 import styles from './ItemList.module.css';
 
 
-const Itemlist = ({items}) =>
+const Itemlist = ({items, onClickDone }) =>
 (<div className={styles.wrap}>
       {items.map(item =>
         <Item key={item.value}
           Item value={item.value}
-          isDone={item.isDone} />
+          isDone={item.isDone} onClickDone={onClickDone} />
         )}
   </div>);
 
