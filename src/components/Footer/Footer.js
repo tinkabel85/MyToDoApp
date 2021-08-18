@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.css';
 
-const Footer = ({count, btn}) =>  (
-  <footer className ={styles.footer}>
+const Footer = ({count, onClickFooter, btn}) =>  (
+  <footer className ={styles.footer} onClick={onClickFooter}>
     <div className={styles.left}>{count} items left </div>
     <div className={styles.btnWrap}>
       {btn.map(item => {
