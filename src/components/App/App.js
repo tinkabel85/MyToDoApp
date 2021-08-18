@@ -10,15 +10,18 @@ class App extends React.Component {
           items: [
             {
               value: 'Create a new app',
-              isDone: true
+              isDone: false,
+              id: 1
             },
             {
               value: 'Add props',
-              isDone: false
+              isDone: false,
+              id: 2
             },
             {
               value: 'Finish all tasks',
-              isDone: false
+              isDone: false,
+              id: 3
             }
           ],
 
@@ -35,11 +38,23 @@ class App extends React.Component {
             isActive: false,
             value: 'Completed',
             }
-          ]
+          ],
+          count: 6
     };
 
-    onClickDone = isDone => console.log(isDone);
-  
+    onClickDone = id => {
+      const newItemList = this.state.items.map(item => {
+        const newItem = {...item};
+
+          if (item.id == id) {
+            newItem.isDone = !item.isDone;
+          }
+
+          return newItem;
+      })
+      this.setState({items: newItemList });
+    };
+
   render() {
 
     return (
@@ -48,7 +63,7 @@ class App extends React.Component {
         <div className={styles.main}>
         <InputItem />
         <ItemList items = {this.state.items} onClickDone={this.onClickDone}/>
-        <Footer count ={3} btn={this.state.filter}/>
+        <Footer count ={this.state.count} onClickFooter={this.onClickFooter} btn={this.state.filter}/>
         </div>
     </div>);
   }
