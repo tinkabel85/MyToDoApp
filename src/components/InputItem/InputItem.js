@@ -19,7 +19,7 @@ class InputItem extends React.Component {
     } else {
       this.setState({
         helperText: 'Required field',
-        isEmptyField: true
+        error: true
       });
     }
   }
@@ -36,7 +36,7 @@ class InputItem extends React.Component {
                   fullWidth
                   margin = "normal"
                   value={this.state.inputValue}
-                  isEmptyField={this.state.isEmptyField}
+                  error={this.state.error}
                   helperText={this.state.helperText}
                   onChange={event=>
                     this.setState({
