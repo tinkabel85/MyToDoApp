@@ -3,7 +3,6 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
-import CustomizedInput from '../InputItem/InputItem';
 
 class App extends React.Component {
     state = {
@@ -39,7 +38,7 @@ class App extends React.Component {
             value: 'Completed',
             }
           ],
-          count: 6
+          count: 3
     };
 
     onClickDone = id => {
@@ -58,8 +57,24 @@ class App extends React.Component {
     onClickDelete = id => {
       const newItemlist = this.state.items.filter(item =>
         item.id !== id );
-      this.setState({ items: newItemlist });
+      this.setState(state => ({
+        items: newItemlist,
+        count: state.count -1
+      }));
+
     };
+
+    onClickAdd = value => this.setState (state => ({
+      items: [
+        ...state.items,
+        {
+          value,
+          isDone: false,
+          id: state.count + 1
+        }
+      ],
+      count: state.count +1
+    }));
 
   render() {
 
@@ -67,7 +82,7 @@ class App extends React.Component {
     <div className={styles.wrap}>
         <h1 className={styles.title}>todos</h1>
         <div className={styles.main}>
-        <InputItem />
+        <InputItem onClickAdd={this.onClickAdd}/>
         <ItemList
         items = {this.state.items}
         onClickDone={this.onClickDone}
