@@ -1,10 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Item.module.css';
+import PropTypes from 'prop-types';
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
-const Item = ({value, isDone, onClickDone, id, onClickDelete}) => (
+const Item = ({value, isDone, id, onClickDone, onClickDelete}) => (
   <div className={styles.wrap}>
       <Checkbox
           color="default"
@@ -25,9 +26,11 @@ const Item = ({value, isDone, onClickDone, id, onClickDelete}) => (
  </div>
 );
 
-Item.defaultProps = {
-  value: '',
-  isDone: false
-};
-
+Item.propTypes = {
+  value: PropTypes.string.isRequired,
+  isDone: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+}
 export default Item;

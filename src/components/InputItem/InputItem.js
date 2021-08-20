@@ -3,6 +3,7 @@ import styles from './InputItem.module.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 
 
 class InputItem extends React.Component {
@@ -11,22 +12,20 @@ class InputItem extends React.Component {
     };
 
     onButtonClick = () => {
-      if (this.state.inputValue !== '') {
+      if (this.state.inputValue === '') {
         this.setState({
-            inputValue: ''
+          helperText: 'Required field',
+          error: true
         });
-        this.props.onClickAdd(this.state.inputValue);
-    } else {
-      this.setState({
-        helperText: 'Required field',
-        error: true
+      } else {this.setState({
+          inputValue: ''
       });
+      this.props.onClickAdd(this.state.inputValue);
+      }
     }
-  }
 
       render() {
         const {onClickAdd} = this.props;
-
 
           return ( <Grid>
               <TextField
@@ -40,7 +39,9 @@ class InputItem extends React.Component {
                   helperText={this.state.helperText}
                   onChange={event=>
                     this.setState({
-                      inputValue: event.target.value.toUpperCase()
+                      inputValue: event.target.value.toUpperCase(),
+                      helperText: '',
+                      error: false
                     })
                   }
               />
@@ -56,5 +57,9 @@ class InputItem extends React.Component {
             </Grid>);
       }
 }
+
+InputItem.propTypes = {
+  onClickAdd: PropTypes.func.isRequired
+};
 
 export default InputItem;

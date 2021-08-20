@@ -3,6 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
     state = {
@@ -45,7 +46,7 @@ class App extends React.Component {
       const newItemList = this.state.items.map(item => {
         const newItem = {...item};
 
-          if (item.id == id) {
+          if (item.id === id) {
             newItem.isDone = !item.isDone;
           }
 
@@ -94,4 +95,11 @@ class App extends React.Component {
   }
 };
 
-    export default App;
+App.propTypes = {
+  items: PropTypes.array,
+  filter: PropTypes.array,
+  onClickAdd: PropTypes.func,
+  onClickDelete: PropTypes.func
+};
+
+export default App;
