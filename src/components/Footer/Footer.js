@@ -29,7 +29,9 @@ const Footer = ({count, onClickFooter, btn}) =>  (
 // };
 
 Footer.propTypes = {
-    count: PropTypes.number.isRequired
+    count: PropTypes.number.isRequired,
+    onClickFooter: PropTypes.func.isRequired,
+    btn: PropTypes.array.isRequired
 };
 
 export default Footer;

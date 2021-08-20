@@ -96,8 +96,8 @@ class App extends React.Component {
 };
 
 App.propTypes = {
-  items: PropTypes.array,
-  filter: PropTypes.array,
+  items: PropTypes.array.isRequired,
+  filter: PropTypes.array.isRequired,
 };
 
 export default App;
