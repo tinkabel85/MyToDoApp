@@ -98,8 +98,6 @@ class App extends React.Component {
 App.propTypes = {
   items: PropTypes.array,
   filter: PropTypes.array,
-  onClickAdd: PropTypes.func,
-  onClickDelete: PropTypes.func
 };
 
 export default App;
