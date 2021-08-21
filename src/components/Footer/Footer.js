@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.css';
+import PropTypes from 'prop-types';
 
 const Footer = ({count, onClickFooter, btn}) =>  (
   <footer className ={styles.footer} onClick={onClickFooter}>
@@ -23,8 +24,14 @@ const Footer = ({count, onClickFooter, btn}) =>  (
 </footer>
   );
 
-Footer.defaultProps = {
-    count: 0
+// Footer.defaultProps = {
+//     count: 0
+// };
+
+Footer.propTypes = {
+    count: PropTypes.number.isRequired,
+    onClickFooter: PropTypes.func.isRequired,
+    btn: PropTypes.array.isRequired
 };
 
 export default Footer;
