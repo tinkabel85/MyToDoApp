@@ -6,13 +6,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 class Item extends React.Component {
-  componentDidMount() {
-    this.timerID = setInterval(() => console.log('element: ', this.props.id), 2000);
-  }
-
-  componentWillUnmount () {
-    clearInterval(this.timerID);
-  }
+  // componentDidMount() {
+  //   this.timerID = setInterval(() => console.log('element: ', this.props.id), 2000);
+  // }
+  //
+  // componentWillUnmount () {
+  //   clearInterval(this.timerID);
+  // }
 
   render() {
     const {value, isDone, id, onClickDone, onClickDelete} = this.props;

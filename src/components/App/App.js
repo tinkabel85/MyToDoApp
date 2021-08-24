@@ -1,49 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import PropTypes from 'prop-types';
 
-class App extends React.Component {
-    state = {
-          items: [
-            {
-              value: 'Create a new app',
-              isDone: false,
-              id: 1
-            },
-            {
-              value: 'Add props',
-              isDone: false,
-              id: 2
-            },
-            {
-              value: 'Finish all tasks',
-              isDone: false,
-              id: 3
-            }
-          ],
 
-          filter: [
-            {
-              isActive: true,
-              value: 'All',
-            },
-            {
-              isActive: false,
-              value: 'Active',
-            },
-            {
-            isActive: false,
-            value: 'Completed',
-            }
-          ],
-          count: 3
-    };
+const App = ()=> {
+      const [items, setItems] = useState([
+                { value: 'Create a new app', isDone: false, id: 1 },
+                { value: 'Add props', isDone: false, id: 2 },
+                { value: 'Finish all tasks', isDone: false, id: 3 }
+              ]);
+      const [filter, setFilter] = useState([
+              { isActive: true, value: 'All' },
+              { isActive: false, value: 'Active' },
+              { isActive: false, value: 'Completed' }
+      ]);
+      const [count, setCount] = useState(3);
 
-    onClickDone = id => {
-      const newItemList = this.state.items.map(item => {
+  useEffect( () => {
+    console.log('componentDidMount');
+  }, []);
+
+  useEffect( ()=> {
+    console.log('componentDidUpdate');
+  },[items]);
+
+    const onClickDone = id => {
+      const newItemList = items.map(item => {
         const newItem = {...item};
 
           if (item.id === id) {
@@ -51,53 +36,46 @@ class App extends React.Component {
           }
 
           return newItem;
-      })
-      this.setState({items: newItemList });
-    }
-
-    onClickDelete = id => {
-      const newItemlist = this.state.items.filter(item =>
-        item.id !== id );
-      this.setState(state => ({
-        items: newItemlist,
-        count: state.count -1
-      }));
-
+      });
+      setItems(newItemList);
     };
 
-    onClickAdd = value => this.setState (state => ({
-      items: [
-        ...state.items,
-        {
-          value,
-          isDone: false,
-          id: state.count + 1
-        }
-      ],
-      count: state.count +1
-    }));
+    const onClickDelete = id => {
+      const newItemList = items.filter(item => item.id !== id );
+        setItems(newItemList);
+        setCount(count -1);
+      };
 
-  render() {
+    const onClickAdd = value => {
+      const newItemList = [
+        ...items,
+        { value, isDone: false, id: count + 1}
+      ];
+      setItems(newItemList);
+      setCount(count +1);
+    };
 
     return (
     <div className={styles.wrap}>
         <h1 className={styles.title}>todos</h1>
         <div className={styles.main}>
-        <InputItem onClickAdd={this.onClickAdd}/>
+        <InputItem onClickAdd={onClickAdd}/>
         <ItemList
-        items = {this.state.items}
-        onClickDone={this.onClickDone}
-        onClickDelete= {this.onClickDelete}
+        items = {items}
+        onClickDone={onClickDone}
+        onClickDelete= {onClickDelete}
         />
-        <Footer count={this.state.count} onClickFooter={this.onClickFooter} btn={this.state.filter}/>
+        <Footer count={count}
+        // onClickFooter={this.onClickFooter}
+        btn={filter}/>
         </div>
     </div>);
-  }
+
 };
 
 App.propTypes = {
-  items: PropTypes.array.isRequired,
-  filter: PropTypes.array.isRequired,
+  items: PropTypes.array,
+  filter: PropTypes.array,
 };
 
 export default App;
