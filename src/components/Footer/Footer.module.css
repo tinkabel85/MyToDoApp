@@ -1,9 +1,8 @@
 * {
-  font-size: 20px;
   font-weight: 100;
   color: #a8a8a8;
 }
-.footer {
+.footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +12,6 @@
 }
 
 .btnWrap {
-  width: 30%;
   display: flex;
   justify-content: space-between;
 }
@@ -21,13 +19,16 @@
   background: transparent;
   border: none;
   padding: 8px;
+  font-size: 18px;
 }
 .itemActive {
   border: 1px solid #c4c4c4;
   border-radius: 5px;
+  font-size: 18px;
 }
 
 .clear {
   background: transparent;
   border: none;
+  font-size: 18px;
 }

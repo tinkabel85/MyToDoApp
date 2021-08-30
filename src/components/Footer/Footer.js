@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import styles from './Footer.module.css';
 import PropTypes from 'prop-types';
 
-const Footer = ({count, onClickFooter, btn}) =>  (
-  <footer className ={styles.footer} onClick={onClickFooter}>
-    <div className={styles.left}>{count} items left </div>
+const Footer = ({count, id, onClickDeleteAll, btn}) =>  (
+  <footer className ={styles.footer}>
+    <div className={styles.left}>{count} tasks left </div>
     <div className={styles.btnWrap}>
       {btn.map(item => {
         return (
@@ -20,7 +20,8 @@ const Footer = ({count, onClickFooter, btn}) =>  (
       );
       })}
   </div>
-      <button className={styles.clear}>Clear completed</button>
+      <button className={styles.clear} onClick={onClickDeleteAll}>Clear completed
+      </button>
 </footer>
   );
 
