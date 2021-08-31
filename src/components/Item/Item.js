@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
-const Item = ({value, isDone, id, onClickDone, onClickDelete}) => (
+const Item = ({value, isDone, id, visible, onClickDone, onClickDelete}) => (
   <div className={styles.wrap}>
       <Checkbox
           color="default"
+          checked={isDone}
           inputProps={{ 'aria-label': 'checkbox with default color' }}
           onClick={()=>onClickDone(id)}
         />
@@ -30,6 +31,7 @@ Item.propTypes = {
   value: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
+  visible: PropTypes.bool.isRequired,
   onClickDone: PropTypes.func.isRequired,
   onClickDelete: PropTypes.func.isRequired,
 }

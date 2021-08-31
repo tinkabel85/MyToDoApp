@@ -1,65 +1,54 @@
-import React from 'react';
+import React, { useState} from 'react';
 // import styles from './InputItem.module.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
+const InputItem = ({onClickAdd}) => {
+    const [inputValue, setInputValue] = useState('');
+    const [helperText, setHelperText] = useState('');
+    const [error, setError] = useState(false);
 
-class InputItem extends React.Component {
-    state = {
-        inputValue: ''
-    };
-
-    onButtonClick = () => {
-      if (this.state.inputValue === '') {
-        this.setState({
-          helperText: 'Required field',
-          error: true
-        });
-      } else {this.setState({
-          inputValue: ''
-      });
-      this.props.onClickAdd(this.state.inputValue);
+    const onButtonClick = () => {
+      if (inputValue === '') {
+        setHelperText('Required field');
+        setError(true);
+      } else {
+        setInputValue('');
+        onClickAdd(inputValue);
       }
     }
+   return ( <Grid>
+       <TextField
+           id = "standard-full-width"
+           style = {{margin: 8}}
+           label = "What needs to be done?"
+           fullWidth
+           margin = "normal"
+           value={inputValue}
+           error={error}
+           helperText={helperText}
+           onChange={event=>
+               setInputValue(event.target.value.toUpperCase())}
+          onFocus={event=>{
+               setHelperText('')
+               setError(false)}
+             }
+       />
 
-      render() {
-        const {onClickAdd} = this.props;
+       <Button
+         variant="contained"
+         color="primary"
+         fullWidth
+         onClick={onButtonClick} >
+            Add task
+        </Button>
+     </Grid>);
+   };
 
-          return ( <Grid>
-              <TextField
-                  id = "standard-full-width"
-                  style = {{margin: 8}}
-                  label = "What needs to be done?"
-                  fullWidth
-                  margin = "normal"
-                  value={this.state.inputValue}
-                  error={this.state.error}
-                  helperText={this.state.helperText}
-                  onChange={event=>
-                    this.setState({
-                      inputValue: event.target.value.toUpperCase(),
-                      helperText: '',
-                      error: false
-                    })
-                  }
-              />
-
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={this.onButtonClick}
-              >
-                   Add task
-               </Button>
-            </Grid>);
-      }
-}
-
-InputItem.propTypes = {
-  onClickAdd: PropTypes.func.isRequired
-};
+   InputItem.propTypes = {
+     onClickAdd: PropTypes.func.isRequired
+   };
 
 export default InputItem;
