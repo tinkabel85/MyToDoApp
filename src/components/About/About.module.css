@@ -1,3 +1,32 @@
 .wrap {
-  padding: 30px;
+  padding: 40px;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.link {
+  text-decoration: none;
+}
+
+li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.error {
+  margin: 10px;
+}
+
+.avatar {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.bio {
+  margin-bottom: 20px;
 }
