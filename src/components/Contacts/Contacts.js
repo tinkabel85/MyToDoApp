@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './Contacts.module.css';
+import Formatting from '../Formatting/Formatting';
 
 
-const Contacts= () =>
-  (<div className={styles.wrap}>
+const Contacts= () => (
+    <div className={styles.wrap}>
     <h1 className={styles.title}>Contacts</h1>
-    
-    </div>);
+    <Formatting>Oksana Pashkovska</Formatting>
+
+    </div>
+  );
 
   export default Contacts;
