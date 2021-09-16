@@ -1,7 +1,7 @@
-* {
+/* * {
   font-weight: 100;
   color: #a8a8a8;
-}
+} */
 .footer{
   display: flex;
   justify-content: space-between;
@@ -20,6 +20,7 @@
   border: none;
   padding: 8px;
   font-size: 18px;
+  color: #a8a8a8;
 }
 .itemActive {
   border: 1px solid #c4c4c4;
@@ -31,4 +32,5 @@
   background: transparent;
   border: none;
   font-size: 18px;
+  color: #a8a8a8;
 }

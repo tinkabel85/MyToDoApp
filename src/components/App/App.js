@@ -5,13 +5,15 @@ import MenuList from '@material-ui/core/MenuList';
 
 import Todo from '../Todo/Todo';
 import About from '../About/About';
+// import AboutMe from '../About/AboutMe';
 import Contacts from '../Contacts/Contacts';
 
 import styles from './App.module.css';
 
 
 const App = () =>
-    (<Router>
+    (<div className={styles.app}>
+      <Router>
           <div className={styles.wrap}>
 
             <div className={styles.sidebar}>
@@ -28,6 +30,8 @@ const App = () =>
                 <Route path='/contacts' component={Contacts} />
             </div>
         </div>
-    </Router>);
+    </Router>
+       <div className={styles.whs}>Designed at Web Hero School</div>
+  </div>);
 
   export default App;
