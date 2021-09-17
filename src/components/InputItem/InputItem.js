@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
-const InputItem = ({onClickAdd}) => {
+const InputItem = ({onClickAdd, items}) => {
     const [inputValue, setInputValue] = useState('');
     const [helperText, setHelperText] = useState('');
     const [error, setError] = useState(false);
@@ -14,7 +14,12 @@ const InputItem = ({onClickAdd}) => {
       if (inputValue === '') {
         setHelperText('Required field');
         setError(true);
-      } else {
+      }
+      else if (items.find(item => item.value === inputValue)){
+          setHelperText('You have this task already!');
+          setError(true);
+        }
+      else {
         setInputValue('');
         onClickAdd(inputValue);
       }
@@ -30,7 +35,7 @@ const InputItem = ({onClickAdd}) => {
            error={error}
            helperText={helperText}
            onChange={event=>
-               setInputValue(event.target.value.toUpperCase())}
+               setInputValue(event.target.value)}
           onFocus={event=>{
                setHelperText('')
                setError(false)}
@@ -41,7 +46,8 @@ const InputItem = ({onClickAdd}) => {
          variant="contained"
          color="primary"
          fullWidth
-         onClick={onButtonClick} >
+         onClick={onButtonClick}
+          >
             Add task
         </Button>
      </Grid>);

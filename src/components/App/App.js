@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import MenuList from '@material-ui/core/MenuList';
+import { Helmet } from 'react-helmet';
 
 import Todo from '../Todo/Todo';
 import About from '../About/About';
@@ -11,15 +12,25 @@ import styles from './App.module.css';
 
 
 const App = () =>
-    (<Router>
+    (<div className={styles.app}>
+      <Helmet>
+          <title>My react app</title>
+               <meta property="og:title" content="Get to know me and use my todo tool" />
+               <meta property="og:url" content="website" />
+               <meta name="description" content="Happy to present my first React application" />
+               <meta property="og:type" content="web application" />
+               <meta property="og:image" content="https://i.postimg.cc/50QwnKNR/Todo-Application-2021-09-17-12-36-59.png " />
+           </Helmet>
+
+      <Router>
           <div className={styles.wrap}>
 
             <div className={styles.sidebar}>
-                <MenuList>
-                     <Link to='/' className={styles.link}><MenuItem>About me</MenuItem></Link>
-                     <Link to='/todo' className={styles.link}><MenuItem>Tasks</MenuItem></Link>
-                     <Link to='/contacts' className={styles.link}><MenuItem>Contacts</MenuItem></Link>
-                 </MenuList>
+              <div className={styles.menu}>
+                    <NavLink to='/' exact className={styles.link} activeClassName={styles.['link__active']} >About me</NavLink>
+                    <NavLink to='/todo' className={styles.link} activeClassName={styles.['link__active']} >Tasks</NavLink>
+                    <NavLink to='/contacts' className={styles.link} activeClassName={styles.['link__active']} >Contacts</NavLink>
+            </div>
             </div>
 
             <div className={styles.content}>
@@ -28,6 +39,8 @@ const App = () =>
                 <Route path='/contacts' component={Contacts} />
             </div>
         </div>
-    </Router>);
+    </Router>
+       <div className={styles.whs}>Designed at Web Hero School</div>
+  </div>);
 
   export default App;

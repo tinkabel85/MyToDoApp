@@ -7,27 +7,56 @@ body {
   background-color: #f5f5f5;
   font-family: 'robotoregular', 'robotothin', sans-serif;
 }
-.link {
-  text-decoration: none;
+.app {
+  position: relative;
 }
 .wrap {
   padding-top: 50px;
   display: flex;
   justify-content: center;
+  height: auto;
 }
 
 .sidebar {
+
   width: 15%;
   background-color: #fff;
   margin-right: 10px;
-  padding: 20px 0 0 20px;
+  /* padding: 20px 0 0 30px; */
   border: 1px solid #f0f0f0;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.link {
+  text-decoration: none;
+  color: #a8a8a8;
+  padding: 5px;
+  margin: 8px;
+  font-size: 20px;
+}
+.link:hover{
+  background-color: #f5f5f5;
+}
+
+.link__active {
+  font-weight: 600;
+}
 .content {
   background-color: #fff;
   border: 1px solid #f0f0f0;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   width: 40%;
+}
+
+.whs {
+position: absolute;
+padding: 20px;
+right: 20%;
+color: #a8a8a8;
+opacity: .5;
 }

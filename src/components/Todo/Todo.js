@@ -139,7 +139,8 @@ const Todo = ()=> {
     return (
     <div className={styles.main}>
         <h1 className={styles.title}>todos</h1>
-        <InputItem onClickAdd={onClickAdd}/>
+        <InputItem onClickAdd={onClickAdd}
+        items = {items}/>
         <ItemList
         items = {items}
         onClickDone={onClickDone}

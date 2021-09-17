@@ -1,84 +1,121 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './About.module.css';
-// import Formatting from '../Formatting/Formatting';
+import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
+import location from './img/location.svg';
+import ReactPaginate from 'react-paginate';
 
 const octokit = new Octokit();
 
-class About extends React.Component {
-    state = {
-        isLoading: true,
-        repoList: [],
-        requestFailed: false,
-        error: {},
-        userInfo: {}
-    }
+const About = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [repoList, setRepoList] = useState([]);
+    const [requestFailed, setRequestFailed] = useState(false);
+    const [error, setError] = useState('');
+    const [userInfo, setUserInfo] = useState({});
+    const [pageNumber, setPageNumber] = useState(0);
 
-    componentDidMount () {
-          octokit.repos.listForUser({
-           username: 'tinkabel85'
-         })
-         .then(response => {
-           console.log(response.data)
-           this.setState({
-              repoList: response.data,
-              isLoading: false
-
-           });
+    useEffect(() => {
+      octokit.repos.listForUser({
+          username: 'tinkabel85'
+        })
+        .then(response => {
+          console.log(response.data);
+          setRepoList(response.data);
+          setIsLoading(false);
         })
         .catch(err => {
           console.log(err)
-          this.setState({
-            requestFailed: true,
-            isLoading: false,
-            error: 'User is not found'
-          })
+          setRequestFailed(true);
+          setIsLoading(false);
+          setError('Something went wrong...');
         });
 
-
-     octokit.users.getByUsername({
-        username: 'tinkabel85'
-      })
+      octokit.users.getByUsername({
+          username: 'tinkabel85'
+        })
         .then(response => {
-          console.log(response.data)
-         this.setState({
-             userInfo: response.data,
-             isLoading: false
-          })
+          console.log(response.data);
+          setUserInfo(response.data);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          setRequestFailed(true);
+          setIsLoading(false);
+          setError('Something went wrong...');
         })
 
+    }, []);
+
+
+
+const reposPerPage = 4;
+const reposSeen = pageNumber * reposPerPage;
+const displayRepos = repoList.slice(reposSeen, reposSeen + reposPerPage);
+const pageCount = Math.ceil(repoList.length / reposPerPage);
+const changePage = ({selected}) => {
+    setPageNumber(selected)
+}
+
+
+    return (
+      <CardContent>
+        <div className={styles.wrap}>
+          { isLoading ?  <CircularProgress /> :
+            <div>
+          {!isLoading &&
+            <div>
+              {!requestFailed  && <div className={styles.header}>
+                    <img className={styles.avatar} src={userInfo.avatar_url} alt={userInfo.name} />
+                    <div className={styles.info}>
+                      <h1 className={styles.info_name}>{userInfo.name}</h1>
+                      <img className={styles.location} src={ location } alt='location'></img>
+                      <p className={styles.info_city}> {userInfo.location}</p>
+                      <p className={styles.info_bio}> {userInfo.bio}</p>
+                      <a className={styles.link} href={userInfo.html_url} target='blank' >Здесь ссылка на мой GitHub</a>
+                    </div>
+              </div> }
+            <ul>
+                  {displayRepos.map(repo => (<li key={repo.id} className={styles.repos}>
+                    <div className={styles.repos_name}>
+                      <a href={repo.html_url} target='blank' className = {styles.repos_link}>
+                        {repo.name}
+                        </a>
+                    </div>
+                    <div className={styles.repos__info}>
+                        <div className= {styles.lang}>
+                          <span className={[styles.circle, styles[repo.language]].join(' ')}></span>
+                          <span className = {styles.repos_lang}> {repo.language}</span>
+                      </div>
+                          <span className={styles.star}>{repo.stargazers_count}</span>
+                          <span className={styles.fork}>{repo.forks_count}</span>
+                          <span className = {styles.repos_date}> Updated on { new Date( repo.updated_at).toLocaleDateString('en-US',
+                            {year: 'numeric', month: 'short', day: 'numeric'})}
+                            </span>
+                    </div>
+                  </li>))}
+            </ul>
+            <ReactPaginate
+                previousLabel = {'Previous'}
+                nextLabel = {'Next'}
+                pageCount = {pageCount}
+                onPageChange = {changePage}
+                containerClassName = {styles.paginationBttns}
+                previousLinkClassName = {styles.previousBttn}
+                nextLinkClassName = {styles.nextBttn}
+                disabledClassName = {styles.paginationDisabled}
+                activeClassName = {styles.paginationActive}
+            />
+          </div>
+        }
+        </div>
       }
+            {requestFailed &&  <h2 className={styles.error}> {error} </h2>}
 
-    render() {
-          const { isLoading, repoList, requestFailed, error, userInfo} = this.state;
+        </div>
+      </CardContent>
+    );
+};
 
-          return (
-              <div className={styles.wrap}>
-                <h1 className={styles.title}>{ isLoading ?  <CircularProgress /> : 'Information'}</h1>
-                {/* <Formatting>about me</Formatting> */}
-
-                {!isLoading &&
-                  <div>
-                    {!requestFailed  && <div className={styles.bio}>
-                          <img className={styles.avatar} src={userInfo.avatar_url} alt={userInfo.name} />
-                          <p>Hello, my name is {userInfo.name}.</p>
-                          <p> I live in {userInfo.location} and study Front-End.</p>
-                          <p> Below you can find the list of my GitHub Repos. </p>
-                      </div> }
-                  <ul>
-                        {repoList.map(repo => (<li key={repo.id}>
-                          <a href={repo.html_url} target='blank' className = {styles.link}>
-                          {repo.name} </a>
-                        </li>))}
-                </ul>
-                </div>
-              }
-                  {requestFailed &&  <h2 className={styles.error}> {error} </h2>}
-              </div>
-          );
-    }
-  }
-
-
-  export default About;
+export default About;
