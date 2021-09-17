@@ -31,7 +31,7 @@
 }
 
 .location {
-  width: 16px;
+  width: 22px;
   height: auto;
   display: inline-block;
   margin-right: 5px;
@@ -59,8 +59,7 @@
 .repos_name {
   font-weight: 400;
   font-size: 16px;
-  color: rgb(64,64,64);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
 }
 .repos_link {
@@ -89,6 +88,8 @@
   display: flex;
   justify-content: space-between;
   width: 70%;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .repos_lang, .repos_date {
@@ -114,12 +115,12 @@
 
 .paginationBttns a:hover {
   color: white;
-  background-color: #2b2eff;
+  background-color: #ccc;
 }
 
 .paginationActive a {
   color: white;
-  background-color: #2b2eff;
+  background-color: #ccc;
 }
 
 .paginationDisabled a {
@@ -136,7 +137,7 @@
 	width: 13px;
 	height: 13px;
 	/* background-color: #e51937; */
-  border: 1px #000 solid;
+  /* border: 1px #000 solid; */
 	border-radius: 50%;
 }
 .HTML {
@@ -148,4 +149,26 @@
 
 .JavaScript {
   background-color: #f0e15a;
+}
+.fork {
+  position: relative;
+}
+
+.fork::before {
+  content: url('./img/fork.svg');
+  position: absolute;
+  width: 16px;
+  height: auto;
+  right: 13px;
+  opacity: .4;
+}
+
+.star {
+  position: relative;
+}
+.star::before {
+  content: url('./img/star.svg');
+  position: absolute;
+  right: 13px;
+  opacity: .4;
 }

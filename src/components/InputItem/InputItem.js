@@ -15,7 +15,7 @@ const InputItem = ({onClickAdd, items}) => {
         setHelperText('Required field');
         setError(true);
       }
-      else if (items.filter(item => item.value === inputValue)){
+      else if (items.find(item => item.value === inputValue)){
           setHelperText('You have this task already!');
           setError(true);
         }
@@ -35,7 +35,7 @@ const InputItem = ({onClickAdd, items}) => {
            error={error}
            helperText={helperText}
            onChange={event=>
-               setInputValue(event.target.value.toUpperCase())}
+               setInputValue(event.target.value)}
           onFocus={event=>{
                setHelperText('')
                setError(false)}

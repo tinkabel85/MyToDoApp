@@ -21,13 +21,13 @@ const Contacts= () => (
         </div>
 
         <div className = {styles.contacts__insta}>
-        <a className={styles.link} href='https://www.instagram.com/oksana_pashkovska/' target='_blank'>
+        <a className={styles.link} href='https://www.instagram.com/oksana_pashkovska/' target='_blank' rel='noreferrer'>
           <img src= {insta} alt='instagram'/>
         </a>
       </div>
 
       <div className = {styles.contacts__whatsApp}>
-      <a className={styles.link} href='https://wa.me/+4915206112644' target='_blank'>
+      <a className={styles.link} href='https://wa.me/+4915206112644' target='_blank' rel='noreferrer'>
         <img src={whatsapp} alt='WhatsApp'/>
       </a>
       </div>
