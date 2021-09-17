@@ -14,14 +14,17 @@ import styles from './App.module.css';
 const App = () =>
     (<div className={styles.app}>
       <Helmet>
-          <title>My react app</title>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <link rel="canonical" href="https://tinkabel.netlify.app/"/>
                <meta property="og:title" content="Get to know me and use my todo tool" />
-               <meta property="og:url" content="website" />
+               <meta property="og:url" content="https://tinkabel.netlify.app/" />
+               <meta property="og:image" content="https://i.postimg.cc/50QwnKNR/Todo-Application-2021-09-17-12-36-59.png " />
                <meta name="description" content="Happy to present my first React application" />
                <meta property="og:type" content="web application" />
-               <meta property="og:image" content="https://i.postimg.cc/50QwnKNR/Todo-Application-2021-09-17-12-36-59.png " />
-           </Helmet>
 
+           </Helmet>
+ 
       <Router>
           <div className={styles.wrap}>
 
