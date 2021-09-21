@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './About.module.css';
-import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
 import location from './img/location.svg';
@@ -21,12 +20,10 @@ const About = () => {
           username: 'tinkabel85'
         })
         .then(response => {
-          console.log(response.data);
           setRepoList(response.data);
           setIsLoading(false);
         })
         .catch(err => {
-          console.log(err)
           setRequestFailed(true);
           setIsLoading(false);
           setError('Something went wrong...');
@@ -36,7 +33,6 @@ const About = () => {
           username: 'tinkabel85'
         })
         .then(response => {
-          console.log(response.data);
           setUserInfo(response.data);
           setIsLoading(false);
         })
@@ -60,28 +56,33 @@ const changePage = ({selected}) => {
 
 
     return (
-      <CardContent>
         <div className={styles.wrap}>
           { isLoading ?  <CircularProgress /> :
             <div>
           {!isLoading &&
             <div>
-              {!requestFailed  && <div className={styles.header}>
-                    <img className={styles.avatar} src={userInfo.avatar_url} alt={userInfo.name} />
-                    <div className={styles.info}>
-                      <h1 className={styles.info_name}>{userInfo.name}</h1>
-                      <img className={styles.location} src={ location } alt='location'></img>
-                      <p className={styles.info_city}> {userInfo.location}</p>
-                      <p className={styles.info_bio}> {userInfo.bio}</p>
-                      <a className={styles.link} href={userInfo.html_url} target='blank' >Здесь ссылка на мой GitHub</a>
-                    </div>
-              </div> }
-            <ul>
+              {!requestFailed  &&
+                <div className={styles.header}>
+                    <div>
+                        <img className={styles.avatar} src={userInfo.avatar_url} alt={userInfo.name} />
+                      </div>
+                      <div className={styles.info}>
+                          <h1 className={styles.info_name}>{userInfo.name}</h1>
+                          <img className={styles.location} src={ location } alt='location'></img>
+                          <div className={styles.info_city}> {userInfo.location}</div>
+                          <div className={styles.info_bio}> {userInfo.bio}</div>
+                          <a className={styles.link} href={userInfo.html_url} target='blank' >Here is my GitHub account.</a>
+                      </div>
+                </div> }
+            <ul className={styles.repos_all}>
                   {displayRepos.map(repo => (<li key={repo.id} className={styles.repos}>
                     <div className={styles.repos_name}>
                       <a href={repo.html_url} target='blank' className = {styles.repos_link}>
                         {repo.name}
                         </a>
+                      <a target='_blank' rel = 'noreferrer' className = {styles.repos_host}
+                      href={repo.name === 'todo_app' ? 'https://tinkabel.netlify.app/' : `https://tinkabel85.github.io/${repo.name}`}>
+                      Demo</a>
                     </div>
                     <div className={styles.repos__info}>
                         <div className= {styles.lang}>
@@ -114,7 +115,6 @@ const changePage = ({selected}) => {
             {requestFailed &&  <h2 className={styles.error}> {error} </h2>}
 
         </div>
-      </CardContent>
     );
 };
 

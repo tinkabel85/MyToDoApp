@@ -1,5 +1,21 @@
-.wrap{
-   padding-left: 20px;
-   padding-top: 20px;
-   margin_bottom: 20px;
- }
+.wrap {
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-bottom: 40px;
+  overflow-y: scroll;
+  min-height: 40%;
+}
+
+@media (max-width: 950px) {
+  .wrap {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    min-height: 40%;
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+}

@@ -5,16 +5,19 @@
 
 .wrap {
   padding: 40px;
+  height: 80vh;
+  max-height: 700px;
 }
 
 .avatar {
-  width: 150px;
+  max-width: 200px;
+  width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: row;
 }
@@ -22,12 +25,13 @@
 .info_name {
   color: #404040;
   margin-bottom: 10px;
+  font-size: calc(18px + 14 * (100vw / 1440));
 }
 
 .info_city {
   display: inline-block;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .location {
@@ -39,32 +43,37 @@
   vertical-align: text-bottom;
 }
 
+.info_bio {
+  font: 400 16px/24px 'robotoregular', sans-serif;
+}
+
 .link {
   text-decoration: none;
   color: #a8a8a8;
+  font: 400 16px/24px 'robotoregular', sans-serif;
 }
 
 .info {
-  /* margin-right: 100px; */
   color: #a8a8a8;
   width: 70%;
   padding-left: 20px;
-  padding-bottom: 40px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  justify-content: space-around; */
 }
 
 .repos_name {
   font-weight: 400;
   font-size: 16px;
   margin-bottom: 8px;
-
+  display: flex;
+  justify-content: space-between;
 }
-.repos_link {
-    text-decoration: none;
-    color: rgb(64,64,64);
+
+.repos_link, .repos_host {
+  text-decoration: none;
+  color: rgb(64, 64, 64);
+}
+
+.repos_link:hover, .repos_host:hover {
+  font-weight: 600;
 }
 
 .error {
@@ -74,30 +83,27 @@
 .repos {
   border: 1px solid #a8a8a8;
   border-radius: 5px;
-  padding: 5px;
+  padding: 7px 20px;
   margin-bottom: 10px;
-  padding-left: 20px;
   list-style-type: none;
 }
 
 .repos:last-child {
   margin-bottom: 50px;
 }
+
 .repos__info {
   color: #a8a8a8;
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 60%;
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-.repos_lang, .repos_date {
-
-}
+.repos_lang, .repos_date {}
 
 .paginationBttns {
-  width: 80%;
   height: 35px;
   list-style: none;
   display: flex;
@@ -107,9 +113,9 @@
 .paginationBttns a {
   padding: 8px;
   margin: 8px;
-  border: 1px solid  #a8a8a8;
+  border: 1px solid #a8a8a8;
   border-radius: 5px;
-  color:  #a8a8a8;
+  color: #a8a8a8;
   cursor: pointer;
 }
 
@@ -127,22 +133,27 @@
   color: grey;
 }
 
-.lang{
+.nextBttn {
+  min-width: 100px;
+}
+
+.lang {
   display: flex;
   flex-direction: row;
 }
-.circle{
-	left: 5px;
+
+.circle {
+  left: 5px;
   margin-right: 5px;
-	width: 13px;
-	height: 13px;
-	/* background-color: #e51937; */
-  /* border: 1px #000 solid; */
-	border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
 }
+
 .HTML {
   background-color: #e34c26;
 }
+
 .CSS {
   background-color: #563d7b;
 }
@@ -150,6 +161,7 @@
 .JavaScript {
   background-color: #f0e15a;
 }
+
 .fork {
   position: relative;
 }
@@ -166,9 +178,74 @@
 .star {
   position: relative;
 }
+
 .star::before {
   content: url('./img/star.svg');
   position: absolute;
   right: 13px;
   opacity: .4;
+}
+
+@media (max-width: 950px) {
+  .repos__info {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 10px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .info_name {
+    font-size: calc(18px + (14 + 14 * 0.7) * ((100vw - 320px) / 1440));
+  }
+}
+
+@media (max-width: 500px) {
+  .wrap {
+    padding: 10px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .info_bio, .info_city, .location {
+    display: none;
+  }
+
+  .info {
+    padding-bottom: 0px;
+  }
+
+  .avatar {
+    max-width: 150px;
+  }
+
+  .repos {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+
+  .repos__info {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .repos_name {
+    font-size: 14px;
+  }
+
+  .fork {
+    display: none;
+  }
+
+  .star {
+    display: none;
+  }
 }

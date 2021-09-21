@@ -6,10 +6,9 @@ import PropTypes from 'prop-types';
 
 const ItemList = ({items, onClickDone, onClickDelete }) =>{
   const visibleItems = items.filter(item => item.visible === true);
-  console.log(visibleItems);
 
  return (<div className={styles.wrap}>
-      {visibleItems.map(item => <Item key={item.id}
+      {visibleItems.map(item => <Item key={item.id} className={styles.item}
           Item
           value={item.value}
           isDone={item.isDone}
