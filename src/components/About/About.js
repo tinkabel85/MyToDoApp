@@ -81,7 +81,7 @@ const changePage = ({selected}) => {
                         {repo.name}
                         </a>
                       <a target='_blank' rel = 'noreferrer' className = {styles.repos_host}
-                      href={repo.name === 'todo_app' ? 'https://tinkabel.netlify.app/' : `https://tinkabel85.github.io/${repo.name}`}>
+                      href={repo.name === 'todo_app' ? 'https://about-tinkabel.netlify.app/' : `https://tinkabel85.github.io/${repo.name}`}>
                       Demo</a>
                     </div>
                     <div className={styles.repos__info}>
