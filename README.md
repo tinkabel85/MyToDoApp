@@ -1,10 +1,15 @@
 # ToDo Application
 
-This application consists of 3 pages:
+This application is built with React JS and consists of 3 parts:
 
-1. Information about me.
-2. ToDo Application.
-3. Contacts.
+1. About me
 
+    + contains the information about me as well as my projects/repos.
 
-ToDo Application provides you with a simple yet powerful tool to plan your tasks and have a full overview of your goals.
+2. Tasks
+
+   + This simple ToDo Application provides you with a tool to plan and have a full overview of your tasks.
+
+3. Contacts
+
+    + Feel free to contact me if you need any further information. 

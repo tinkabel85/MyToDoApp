@@ -130,7 +130,7 @@
 }
 
 .paginationDisabled a {
-  color: grey;
+  display: none;
 }
 
 .nextBttn {
