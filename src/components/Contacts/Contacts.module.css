@@ -1,3 +1,48 @@
-.wrap{
-  padding: 30px;
+.wrap {
+  padding: 40px;
+  width: 90%;
+  margin: auto;
+  height: 80vh;
+  max-height: 700px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 950px) {
+  img {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 10px;
+  }
+
+  .contacts {
+    flex-direction: column;
+    height: 80%;
+  }
+
+  img {
+    width: 70px;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
@@ -12,19 +12,11 @@ const Todo = ()=> {
                 { value: 'Finish all tasks', isDone: false, id: 3, visible: true },
               ]);
       const [filter, setFilter] = useState([
-              { isActive: false, value: 'All' },
+              { isActive: true, value: 'All' },
               { isActive: false, value: 'Active' },
               { isActive: false, value: 'Completed' }
       ]);
       const [count, setCount] = useState(3);
-
-  useEffect( () => {
-    console.log('componentDidMount');
-  }, []);
-
-  useEffect( ()=> {
-    console.log('componentDidUpdate');
-  },[items]);
 
     const onClickDone = id => {
       const newItemList = items.map(item => {
@@ -139,7 +131,8 @@ const Todo = ()=> {
     return (
     <div className={styles.main}>
         <h1 className={styles.title}>todos</h1>
-        <InputItem onClickAdd={onClickAdd}/>
+        <InputItem onClickAdd={onClickAdd}
+        items = {items}/>
         <ItemList
         items = {items}
         onClickDone={onClickDone}
