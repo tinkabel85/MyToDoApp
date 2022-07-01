@@ -91,7 +91,6 @@ const About = () => {
                         } else {
                           url = `https://tinkabel85.github.io/${repo.name}`
                         }
-
                         // href={repo.name === 'MyToDoApp' ? 'https://tinkabel.netlify.app/' : repo.name === 'City4mini' ? 'https://city4mini.herokuapp.com/' : `https://tinkabel85.github.io/${repo.name}`}>
                         return url;
                       })()}
