@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import MenuList from '@material-ui/core/MenuList';
 import { Helmet } from 'react-helmet';
 
 import Todo from '../Todo/Todo';
@@ -15,16 +13,15 @@ const App = () =>
     (<div className={styles.app}>
       <Helmet>
                 <meta charSet="utf-8" />
-                <title>My Title</title>
-                <link rel="canonical" href="https://tinkabel.netlify.app/"/>
+                <title>ToDo Application</title>
+                <link rel="canonical" href="https://about-tinkabel.netlify.app/"/>
                <meta property="og:title" content="Get to know me and use my todo tool" />
-               <meta property="og:url" content="https://tinkabel.netlify.app/" />
+               <meta property="og:url" content="https://about-tinkabel.netlify.app/" />
                <meta property="og:image" content="https://i.postimg.cc/50QwnKNR/Todo-Application-2021-09-17-12-36-59.png " />
                <meta name="description" content="Happy to present my first React application" />
                <meta property="og:type" content="web application" />
-
            </Helmet>
- 
+
       <Router>
           <div className={styles.wrap}>
 
