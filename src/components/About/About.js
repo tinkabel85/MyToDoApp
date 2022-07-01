@@ -81,7 +81,7 @@ const About = () => {
                       {repo.name}
                     </a>
                     <a target='_blank' rel='noreferrer' className={styles.repos_host}
-                      href={repo.name === 'MyToDoApp' ? 'https://tinkabel-todo.netlify.app/' : repo.name === 'City4mini' ? 'https://city4mini.herokuapp.com/' : `https://tinkabel85.github.io/${repo.name}`}>
+                      href={repo.name === 'MyToDoApp' ? 'https://tinkabel.netlify.app/' : repo.name === 'City4mini' ? 'https://city4mini.herokuapp.com/' : `https://tinkabel85.github.io/${repo.name}`}>
                       Demo</a>
                   </div>
                   <div className={styles.repos__info}>
