@@ -21,11 +21,13 @@ This application consists of 3 parts:
 1. About me
 
     + contains the information about me as well as my projects (links to Github repositories and web-applications)
-    ![about me](https://i.ibb.co/59Z6KmH/ToDo-rep.png)
+
+![about me](https://i.ibb.co/59Z6KmH/ToDo-rep.png)
 2. Tasks
 
    + This simple ToDo Application provides you with a tool to plan your activities and allows you to have a full overview of your tasks.
-   ![tasks](https://i.ibb.co/FwLMGLK/ToDo.png)
+
+![tasks](https://i.ibb.co/FwLMGLK/ToDo.png)
 
 3. Contacts
 
