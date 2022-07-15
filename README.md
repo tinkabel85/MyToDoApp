@@ -1,9 +1,10 @@
 # ToDo Application
 
----
+
 ### About The Project
 
-ToDo application with basic functionality to manage your tasks. It also contains the overview of all my current repositories at Github.
+ToDo application with basic functionality to manage your tasks. \
+It also contains the overview of my Github page with the current (active/public) repositories.
 ___
 
 ### Built With
@@ -16,11 +17,11 @@ ___
 ___ 
 
 ### Project Structure
-This application consists of 3 parts:
+This application consists of 3 parts (pages):
 
 1. About me
 
-    + contains the information about me as well as my projects (links to Github repositories and web-applications)
+    + contains the information about me as well as my projects (links to Github repositories and deployed applications)
 
 ![about me](https://i.ibb.co/59Z6KmH/ToDo-rep.png)
 
@@ -36,7 +37,7 @@ This application consists of 3 parts:
 
 
 ---
-# Getting Started 
+###  Getting Started 
 
 #### `Step 1` - clone the repo
 
